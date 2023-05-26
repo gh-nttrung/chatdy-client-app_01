@@ -1,4 +1,5 @@
 import axios from "axios";
+import { MessageAI } from "./types";
 
 export interface ResBody {
   success: boolean;
@@ -44,4 +45,36 @@ const get = async (
   }
 };
 
-export { post, get };
+
+const openAiPost = async (
+  data: MessageAI[]
+): Promise<ResBody> => {
+  try {
+
+    const httpAI = axios.create({
+      baseURL: "https://api.openai.com/v1/",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "Bearer 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",
+      },
+    })
+
+    const response = await httpAI.post("chat/completions", {
+      model: "gpt-3.5-turbo",
+      messages: data,
+    });
+
+    const message = response.data.choices[0].message;
+    return {
+      success: true,
+      data: message,
+    };
+
+  } catch (error) {
+    console.error(error);
+    throw new Error("POST request failed");
+  }
+};
+
+export { post, get, openAiPost };

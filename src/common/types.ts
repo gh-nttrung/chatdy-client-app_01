@@ -26,3 +26,8 @@ export interface ChatModel {
   created_at?: Date;
   updated_at?: Date;
 }
+
+export interface MessageAI{
+  role: "user" | "assistant";
+  content: string;
+}

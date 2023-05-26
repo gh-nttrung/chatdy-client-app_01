@@ -15,6 +15,7 @@ import { post } from "./common/api";
 
 const HomePage = lazy(() => import("./pages/home"));
 const ChatPage = lazy(() => import("./pages/chat"));
+const ChatAIPage = lazy(() => import("./pages/chatAI"));
 const LoginPage = lazy(() => import("./pages/login"));
 const RegisterPage = lazy(() => import("./pages/register"));
 const NotFoundPage = lazy(() => import("./pages/notfound"));
@@ -64,6 +65,18 @@ const App: FunctionComponent = () => {
                 <Auth>
                   <Layout>
                     <ChatPage />
+                  </Layout>
+                </Auth>
+              </Suspense>
+            }
+          />
+          <Route
+            path="/chatAI"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <Auth>
+                  <Layout>
+                    <ChatAIPage />
                   </Layout>
                 </Auth>
               </Suspense>

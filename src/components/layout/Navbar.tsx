@@ -14,8 +14,14 @@ export default function Navbar() {
   return (
     <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       {/* <!-- Navbar Brand--> */}
-      <Link className="navbar-brand ps-3" to="/" style={{fontWeight: "bold"}}>
+      <Link className="navbar-brand ps-3" to="/" style={{ fontWeight: "bold" }}>
         CHATDY
+      </Link>
+      <Link className="nav-link text-muted" to="/chat" style={{ marginRight: "30px" }}>
+        Chat With Human
+      </Link>
+      <Link className="nav-link text-muted" to="/chatai">
+        Chat With AI
       </Link>
       {/* <!-- Sidebar Toggle--> */}
       {/* <button
