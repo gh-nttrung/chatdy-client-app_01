@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContextProvider";
 
@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       {/* <!-- Navbar Brand--> */}
-      <Link className="navbar-brand ps-3" to="/">
+      <Link className="navbar-brand ps-3" to="/" style={{fontWeight: "bold"}}>
         CHATDY
       </Link>
       {/* <!-- Sidebar Toggle--> */}

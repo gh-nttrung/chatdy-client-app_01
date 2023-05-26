@@ -23,7 +23,7 @@ export default function ChatItemComponent({
 
   return (
     <li className="p-2 border-top" onClick={handleSelect}>
-      <a href="#" className="d-flex justify-content-between">
+      <a className="d-flex justify-content-between" style={{textDecoration: "none"}}>
         <div className="d-flex flex-row">
           <div>
             <span style={{ marginInline: "5px" }}>

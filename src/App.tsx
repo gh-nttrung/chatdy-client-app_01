@@ -18,22 +18,25 @@ const ChatPage = lazy(() => import("./pages/chat"));
 const LoginPage = lazy(() => import("./pages/login"));
 const RegisterPage = lazy(() => import("./pages/register"));
 const NotFoundPage = lazy(() => import("./pages/notfound"));
-// const ChatDemo = lazy(() => import("./pages/chatdemo"));
 
 const App: FunctionComponent = () => {
   const { handleAuthData } = useContext(AuthContext);
 
   const handleVerifyToken = async () => {
-    const res = await post("/auth/verify_token", {
-      token: `${localStorage.getItem("authToken")}`,
-    });
-    if (res.success) {
-      handleAuthData(res.data);
-    } else {
-      localStorage.setItem("authToken", "");
-      handleAuthData(null);
+    const token = localStorage.getItem("authToken");
+    if(token){
+      const res = await post("/auth/verify_token", {
+        token: `${localStorage.getItem("authToken")}`,
+      });
+      if (res.success) {
+        handleAuthData(res.data);
+      } else {
+        localStorage.setItem("authToken", "");
+        handleAuthData(null);
+      }
     }
   };
+  
   useEffect(() => {
     handleVerifyToken();
   }, []);
@@ -66,16 +69,6 @@ const App: FunctionComponent = () => {
               </Suspense>
             }
           />
-          {/* <Route
-            path="/chatdemo"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <Auth>
-                  <ChatDemo />
-                </Auth>
-              </Suspense>
-            }
-          /> */}
           <Route
             path="/login"
             element={

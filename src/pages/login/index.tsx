@@ -27,16 +27,15 @@ export default function LoginPage() {
     if (userName && password && userName !== "" && password !== "") {
       const url = "/auth/login";
       const reqBody = { user_name: userName, password: password };
-      
+
       const res = await post(url, reqBody);
 
-      if(res.success){
+      if (res.success) {
         localStorage.setItem("authToken", `${res.data.token}`);
         // Go to home page
-        navigate("/");
-      }
-      else{
-        setNotice({message: res.data.message ?? "Login fail", type: "error"})
+        navigate("/", { replace: true });
+      } else {
+        setNotice({ message: res.data.message ?? "Login fail", type: "error" });
       }
     }
   };
@@ -140,10 +139,8 @@ export default function LoginPage() {
           </div>
         </footer>
       </div>
-    
-    {notice && (
-      <Notification notice={notice} onClose={handleCloseNotice}/>
-    )}
+
+      {notice && <Notification notice={notice} onClose={handleCloseNotice} />}
     </div>
   );
 }

@@ -30,7 +30,14 @@ export default function ChatWindow() {
               <ChatBoxComponent chat={currentChat} />
             ) : (
               <MDBCol md="6" lg="7" xl="8">
-                <div className="text-muted">
+                <div
+                  className="text-muted"
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
                   <h1>Welcome</h1>
                   <span>Let's select a chat</span>
                 </div>

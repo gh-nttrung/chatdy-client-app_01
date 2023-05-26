@@ -59,7 +59,7 @@ export default function ChatListComponent({ onSelected }: ChatListProps) {
           <MDBInputGroup className="mb-3">
             <input
               className="form-control rounded"
-              placeholder="Input user name"
+              placeholder="Enter your friend's username to chat"
               type="text"
               value={userNameInput}
               onChange={(event) => setUserNameInput(event.target.value)}
